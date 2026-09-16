@@ -4,9 +4,7 @@ Ein kurzes, humorvolles Grundlagenquiz mit 8 Multiple-Choice-Fragen für etwa 5 
 
 ## Spielen
 
-https://patrickfischerksa.github.io/industrialisierung-quiz/
-
-Lokal: `dist/index.html` im Browser öffnen. Keine Installation erforderlich.
+Repository herunterladen und `dist/index.html` im Browser öffnen. Keine Installation erforderlich.
 
 ## Materialgrundlage
 
@@ -32,4 +30,4 @@ Ein Punkt pro Frage, keine Zeit- oder Fehlerstrafe. Als formative Wissensüberpr
 
 ## Technik
 
-Statische HTML-, CSS- und JavaScript-Dateien in `dist/`. Keine externen Bibliotheken, Schriftarten, Cookies oder Analyseprogramme. GitHub Actions veröffentlicht diesen Ordner auf GitHub Pages. Eine optionale, per Feature-Erkennung aktivierte WebMCP-Schnittstelle nutzt dieselben Quizaktionen wie die Oberfläche.
+Statische HTML-, CSS- und JavaScript-Dateien in `dist/`. Keine externen Bibliotheken, Schriftarten, Cookies oder Analyseprogramme. Ein manuell startbarer GitHub-Actions-Workflow kann diesen Ordner auf GitHub Pages veröffentlichen, sobald Pages eingerichtet und die öffentliche Veröffentlichung freigegeben ist. Eine optionale, per Feature-Erkennung aktivierte WebMCP-Schnittstelle nutzt dieselben Quizaktionen wie die Oberfläche.
