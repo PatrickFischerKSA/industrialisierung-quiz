@@ -6,7 +6,7 @@ Acht kurze Grundlagenfragen für ungefähr fünf Minuten, mit Rückmeldung und E
 
 ## Klassenmodus
 
-1. Lehrerdashboard öffnen und den separat bereitgestellten Lehrerschlüssel eingeben.
+1. Lehrerdashboard öffnen und den separat bereitgestellten Lehrerpasswort eingeben.
 2. Eine Klasse oder Durchführung anlegen.
 3. Teilnahmelink oder Klassencode teilen.
 4. Lernende treten mit einem frei gewählten Kürzel bei. Es sind keine Schülerkonten nötig.
@@ -19,7 +19,7 @@ Das Dashboard aktualisiert sich alle zehn Sekunden. Es zeigt jeden Versuch mit a
 - Ohne Klassenbeitritt bleibt das Quiz ein lokales Übungsquiz ohne zentrale Antworterfassung.
 - Im Klassenmodus speichert Cloudflare D1 Klassencode, Kürzel, Versuch-ID, Antworten und Zeitpunkte. Keine vollständigen Namen verwenden.
 - Antworten werden beim Auswählen gespeichert. Bei Netzfehlern bleiben nicht übertragene Antworten im aktuellen Browser-Tab; «Erneut speichern» sendet sie nach. Ein Neuladen setzt diesen Versuch fort. Beim Schliessen des Tabs können noch nicht übertragene Antworten verloren gehen.
-- Der Lehrerschlüssel ist ein zufällig erzeugtes Servergeheimnis und liegt **nicht im Repository**. Das Dashboard speichert ihn nur für den aktuellen Tab. Alle Lehrer-API-Endpunkte prüfen ihn serverseitig. Der gemeinsame Schlüssel gewährt Zugriff auf sämtliche Klassen dieses Dashboards.
+- Das Lehrerpasswort ist ein Servergeheimnis und liegt **nicht im Repository**. Das Dashboard speichert ihn nur für den aktuellen Tab. Alle Lehrer-API-Endpunkte prüfen ihn serverseitig. Das gemeinsame Passwort gewährt Zugriff auf sämtliche Klassen dieses Dashboards.
 - Schüler erhalten nur Zugriff auf ihren eigenen Versuch. Ihre Zugangstoken werden in der Datenbank gehasht gespeichert. Bereits abgegebene Antworten sind unveränderlich.
 - Daten bleiben bis zum Löschen einer Klasse gespeichert. CSV-Exporte liegen anschliessend lokal bei der Lehrperson.
 - Kein benotetes Prüfungswerkzeug: Lösungen sind wie zuvor im öffentlichen Quizcode sichtbar.
@@ -52,4 +52,4 @@ npm run deploy:api
 npx wrangler secret put TEACHER_KEY
 ```
 
-Den Lehrerschlüssel nur über den Secret-Mechanismus verwalten, niemals in `dist/`, Git oder die Wrangler-Konfiguration schreiben. Lokale Geheimnisse, Testdaten und Abhängigkeiten sind über `.gitignore` ausgeschlossen.
+Das Lehrerpasswort nur über den Secret-Mechanismus verwalten, niemals in `dist/`, Git oder die Wrangler-Konfiguration schreiben. Lokale Geheimnisse, Testdaten und Abhängigkeiten sind über `.gitignore` ausgeschlossen.

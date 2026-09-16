@@ -12,7 +12,7 @@ const bearer = r => r.headers.get('Authorization')?.replace(/^Bearer /,'') || ''
 async function teacher(request,env){
  if(!env.TEACHER_KEY)fail(503,'Lehrerzugang ist noch nicht eingerichtet.');
  const actual=new TextEncoder().encode(await hash(bearer(request)));const expected=new TextEncoder().encode(await hash(env.TEACHER_KEY));
- if(!crypto.subtle.timingSafeEqual(actual,expected))fail(401,'Der Lehrerschlüssel stimmt nicht.');
+ if(!crypto.subtle.timingSafeEqual(actual,expected))fail(401,'Das Lehrerpasswort stimmt nicht.');
 }
 async function route(request,env){
  const u=new URL(request.url),p=u.pathname,m=request.method;
