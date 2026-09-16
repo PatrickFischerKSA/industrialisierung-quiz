@@ -1,35 +1,55 @@
 # Volldampf! – Industrialisierung der Schweiz
 
-Ein kurzes, humorvolles Grundlagenquiz mit 8 Multiple-Choice-Fragen für etwa 5 Minuten. Sofortige Rückmeldung, Erklärungen, Punktestand, Gesamtauswertung und Neustart. Für Smartphone und Desktop, mit Tastatur bedienbar, ohne Anmeldung oder Datenerhebung.
+[Quiz spielen](https://patrickfischerksa.github.io/industrialisierung-quiz/) · [Lehrerdashboard](https://patrickfischerksa.github.io/industrialisierung-quiz/lehrer.html)
 
-## Spielen
+Acht kurze Grundlagenfragen für ungefähr fünf Minuten, mit Rückmeldung und Erklärungen.
 
-**[Quiz direkt spielen](https://patrickfischerksa.github.io/industrialisierung-quiz/)**
+## Klassenmodus
 
-Alternativ: Repository herunterladen und `dist/index.html` im Browser öffnen. Keine Installation erforderlich.
+1. Lehrerdashboard öffnen und den separat bereitgestellten Lehrerschlüssel eingeben.
+2. Eine Klasse oder Durchführung anlegen.
+3. Teilnahmelink oder Klassencode teilen.
+4. Lernende treten mit einem frei gewählten Kürzel bei. Es sind keine Schülerkonten nötig.
+5. Jede Antwort wird an den Server übertragen. Laufende Versuche sind bereits sichtbar.
+
+Das Dashboard aktualisiert sich alle zehn Sekunden. Es zeigt jeden Versuch mit allen Antworten, Antwortverteilungen und Fehlerquoten je Frage sowie den Durchschnitt der abgeschlossenen Versuche. Ein CSV-Export enthält jede Frage jedes Versuchs einschliesslich offener Antworten, Lösungskorrektheit und Zeitpunkten. Ein erneuter Beitritt erzeugt einen neuen Versuch, auch bei gleichem Kürzel. Neue Teilnahmen können gesperrt werden; bereits gestartete Versuche dürfen weiter antworten. Klassen samt Antworten können nach Bestätigung gelöscht werden.
+
+## Daten und Zugang
+
+- Ohne Klassenbeitritt bleibt das Quiz ein lokales Übungsquiz ohne zentrale Antworterfassung.
+- Im Klassenmodus speichert Cloudflare D1 Klassencode, Kürzel, Versuch-ID, Antworten und Zeitpunkte. Keine vollständigen Namen verwenden.
+- Antworten werden beim Auswählen gespeichert. Bei Netzfehlern bleiben nicht übertragene Antworten im aktuellen Browser-Tab; «Erneut speichern» sendet sie nach. Ein Neuladen setzt diesen Versuch fort. Beim Schliessen des Tabs können noch nicht übertragene Antworten verloren gehen.
+- Der Lehrerschlüssel ist ein zufällig erzeugtes Servergeheimnis und liegt **nicht im Repository**. Das Dashboard speichert ihn nur für den aktuellen Tab. Alle Lehrer-API-Endpunkte prüfen ihn serverseitig. Der gemeinsame Schlüssel gewährt Zugriff auf sämtliche Klassen dieses Dashboards.
+- Schüler erhalten nur Zugriff auf ihren eigenen Versuch. Ihre Zugangstoken werden in der Datenbank gehasht gespeichert. Bereits abgegebene Antworten sind unveränderlich.
+- Daten bleiben bis zum Löschen einer Klasse gespeichert. CSV-Exporte liegen anschliessend lokal bei der Lehrperson.
+- Kein benotetes Prüfungswerkzeug: Lösungen sind wie zuvor im öffentlichen Quizcode sichtbar.
 
 ## Materialgrundlage
 
-- **Text Industrialisierung.pdf**: S. 1 (Protoindustrialisierung und Verlagssystem), S. 3 (Mechanisierung, frühe Branchen, Eisenbahn und Export), S. 5 (Bundesstaat, Wasserkraft und Strukturwandel).
-- **Notizseiten für Präsentation Industralisierung.pdf**: S. 1–2, Karten der Verkehrsverbindungen um 1860 und Eisenbahnlinien vor 1914. Grundlage für die Einordnung der Eisenbahnfrage.
+- **Text Industrialisierung.pdf**: S. 1 (Verlagssystem), S. 3 (Mechanisierung, Branchen, Eisenbahn, Export), S. 5 (Bundesstaat, Wasserkraft, Strukturwandel).
+- **Notizseiten für Präsentation Industralisierung.pdf**: Karten um 1860 und vor 1914, S. 1–2, als Grundlage der Eisenbahnfrage.
 
-Die Original-PDFs und ihre Abbildungen sind nicht Bestandteil des Repositories. Das Quiz enthält eigenständig formulierte Fragen und Erklärungen. Arbeitsaufträge in den Materialien wurden nicht als technische Anweisungen übernommen.
+Original-PDFs und Abbildungen sind nicht Bestandteil dieses Repositories. Die Lösungen der acht Fragen sind A, C, B, D, A, C, B, D. Ein Punkt je Frage; keine Zeit- oder Fehlerstrafe.
 
-## Lernziele und Lösungen
+## Betrieb und Entwicklung
 
-| Frage | Grundlage | Lösung |
-|---|---|---|
-| 1 | Verlagssystem verstehen | A: Heimarbeit; Händler liefern Rohstoffe und verkaufen Waren |
-| 2 | Kern der Industrialisierung erkennen | C: Mechanisierung und teilweise Verlagerung in Fabriken |
-| 3 | Frühe Branchen kennen | B: Baumwolle, Seide und Uhrmacherei |
-| 4 | Bedeutung der Eisenbahn erklären | D: Erleichterte Transporte und Zugang zu Märkten |
-| 5 | Wirtschaftliche Folgen von 1848 kennen | A: Binnenzölle entfallen, Binnenmarkt wird vereinheitlicht |
-| 6 | Exportorientierung verstehen | C: Kleiner Binnenmarkt und starke Konkurrenz |
-| 7 | «Weisse Kohle» erklären | B: Wasserkraft zur Stromerzeugung |
-| 8 | Strukturwandel erkennen | D: Wachsende Bedeutung des Dienstleistungssektors |
+Die Oberfläche liegt in `dist/` und wird durch GitHub Actions auf GitHub Pages veröffentlicht. `server/worker.js` ist die zentrale Cloudflare-Workers-API mit D1-Datenbank. Die API-Adresse steht in `dist/config.js`. Datenbankmigrationen stehen unter `migrations/`.
 
-Ein Punkt pro Frage, keine Zeit- oder Fehlerstrafe. Als formative Wissensüberprüfung gedacht, nicht als benotete Prüfung. Lösungen sind im Quelltext sichtbar.
+```sh
+npm ci
+# .dev.vars nur lokal erstellen: TEACHER_KEY="local-test-key"
+npx wrangler d1 migrations apply industrialisierung-quiz --local
+npm run dev
+```
 
-## Technik
+In einem zweiten Terminal `npm test` ausführen. Der Test nutzt localhost:8787. Die Oberflächentests setzen ihre API-Adresse ausdrücklich auf localhost. Die Tests legen ausschliesslich eigene Testklassen an und löschen diese wieder.
 
-Statische HTML-, CSS- und JavaScript-Dateien in `dist/`. Keine externen Bibliotheken, Schriftarten, Cookies oder Analyseprogramme. GitHub Actions veröffentlicht diesen Ordner bei Änderungen auf dem Hauptzweig automatisch auf GitHub Pages. Eine optionale, per Feature-Erkennung aktivierte WebMCP-Schnittstelle nutzt dieselben Quizaktionen wie die Oberfläche.
+Produktionsbereitstellung des Backends (separat von GitHub Pages):
+
+```sh
+npx wrangler d1 migrations apply industrialisierung-quiz --remote
+npm run deploy:api
+npx wrangler secret put TEACHER_KEY
+```
+
+Den Lehrerschlüssel nur über den Secret-Mechanismus verwalten, niemals in `dist/`, Git oder die Wrangler-Konfiguration schreiben. Lokale Geheimnisse, Testdaten und Abhängigkeiten sind über `.gitignore` ausgeschlossen.
