@@ -1,0 +1,18 @@
+# Illustrationen für Volldampf!
+
+Erzeugt mit dem integrierten Bildgenerierungswerkzeug am 17. September 2026. Historisch inspirierte didaktische Illustrationen; keine historischen Originalquellen. Als JPEG für die Website exportiert.
+
+Die Eisenbahn illustriert den Einstieg. Nach der Antwort erscheint ein passendes Motiv zur Erklärung.
+
+## Heimarbeit – dist/images/heimarbeit.jpg
+
+Use case: historical-scene. Asset type: educational quiz illustration, landscape 3:2. Cohesive Swiss industrial-history editorial illustration, elegant mid-century screenprint and linocut aesthetic, bold dark charcoal ink (#17222a), golden yellow (#ffcf32), cool blue-grey accents, light grey (#f0f2f3) paper background, restrained print grain. Clear confident shapes, witty warmth appropriate to secondary school students, not childish clipart, not photoreal. Period-plausible clothing and machinery. No words, no letters, no numbers, no labels, no logos, no watermarks. Full composition with generous margins so subjects are not clipped. Scene: inside a Swiss rural home around 1800, an adult woman working at a wooden handloom while an adult man winds thread by a small table, folded cloth and yarn spools, one window with rolling rural countryside. Clearly domestic craft production, engaging human silhouettes, no modern machinery, no electricity. Simple visual hierarchy and a small golden-yellow textile accent.
+
+## Eisenbahn – dist/images/eisenbahn.jpg
+
+Use case: historical-scene. Asset type: educational quiz illustration, landscape 3:2. Cohesive Swiss industrial-history editorial illustration, elegant mid-century screenprint and linocut aesthetic, bold dark charcoal ink (#17222a), golden yellow (#ffcf32), cool blue-grey accents, light grey (#f0f2f3) paper background, restrained print grain. Clear confident shapes, witty warmth appropriate to secondary school students, not childish clipart, not photoreal. Period-plausible clothing and machinery. No words, no letters, no numbers, no labels, no logos, no watermarks. Full composition with generous margins so subjects are not clipped. Scene: a Swiss steam locomotive pulling a short train over a stone railway viaduct in the late nineteenth century, Alpine foothills behind, a modest factory and small town in the distance, curved plume of pale steam, three-quarter view. Cheerful sense of movement and connection. Locomotive boiler and wheels recognizable, railway visibly continuous. Wide balanced composition. No invented real company branding.
+
+## Wasserkraft – dist/images/wasserkraft.jpg
+
+Use case: historical-scene. Asset type: educational quiz illustration, landscape 3:2. Cohesive Swiss industrial-history editorial illustration, elegant mid-century screenprint and linocut aesthetic, bold dark charcoal ink (#17222a), golden yellow (#ffcf32), cool blue-grey accents, light grey (#f0f2f3) paper background, restrained print grain. Clear confident shapes, witty warmth appropriate to secondary school students, not childish clipart, not photoreal. Period-plausible clothing and machinery. No words, no letters, no numbers, no labels, no logos, no watermarks. Full composition with generous margins so subjects are not clipped. Scene: Swiss hydroelectric power and industry around 1900, Alpine river flows towards a modest early hydroelectric powerhouse, a visible short penstock on the hillside, slender period utility poles carrying wires towards small factory buildings in the valley. Mountains and water, golden yellow industrial accents. No giant modern concrete dam, no wind turbines, no futuristic equipment. Historically inspired simplified overview rather than technical diagram.
+
